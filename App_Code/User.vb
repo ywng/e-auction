@@ -55,13 +55,13 @@ Namespace eAuctionLib
             Dim dbCommand1 As OleDbCommand = New OleDbCommand(commString1, _dbConn)
 
             Dim commString2 As String = "INSERT INTO [CustomerProfile] ([customerId], [firstName],[lastName], [homePhone], [officePhone], [mobilePhone],[email],[buildingFlat],[buildingFloor],[buildingBlock],[buildingName]" +
-                ",[streetNumber],[streetName],[district],[city],[title]) +VALUES ('" + userId + "','" + "','" + firstName + "','" + "','" + lastName + "','" + "','" + homePhone + "','" + "','" + officePhone + "','" + "','" + mobilePhone + "','" +
-                "','" + email + "','" + "','" + flat + "','" + "','" + floor + "','" + "','" + tower + "','" + "','" + building + "','" + "','" + streetNo + "','" + "','" + street + "','" + "','" + district + "','" + "','" + city + "','" + "','" + title + "')"
+                ",[streetNumber],[streetName],[district],[city],[title]) VALUES ('" + userId + "','" + firstName + "','" + lastName + "','" + homePhone + "','" + officePhone + "','" + mobilePhone +
+                "','" + email + "','" + flat + "','" + floor + "','" + tower + "','" + building + "','" + streetNo + "','" + street + "','" + district + "','" + city + "','" + title + "')"
             Dim dbCommand2 As OleDbCommand = New OleDbCommand(commString2, _dbConn)
 
             _dbConn.Open()
             dbCommand1.ExecuteNonQuery()
-            dbCommand1.ExecuteNonQuery()
+            dbCommand2.ExecuteNonQuery()
             _dbConn.Close()
 
 
@@ -122,6 +122,21 @@ Namespace eAuctionLib
 
         End Function
 
+        Public Function addItem(ByVal sellerId As String, ByVal title As String, ByVal category As String, ByVal description As String) As Boolean
+            _dbConn = New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + HttpContext.Current.Server.MapPath(".\\App_Data\\EauctionDb.accdb") + ";Persist Security Info=True")
+            Dim commString1 As String = "INSERT INTO [Item] ([sellerId],[title],[category],[description]) VALUES ('" +
+                               sellerId + "','" +
+                               title + "','" +
+                               category + "','" +
+                               description +
+                               "')"
+            Dim dbCommand1 As OleDbCommand = New OleDbCommand(commString1, _dbConn)
+
+            _dbConn.Open()
+            dbCommand1.ExecuteNonQuery()
+            _dbConn.Close()
+            Return True
+        End Function
 
 
 
