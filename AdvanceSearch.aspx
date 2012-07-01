@@ -41,7 +41,7 @@
                 <asp:ListItem>Toys and Hobbies</asp:ListItem>
                 <asp:ListItem>DVDs and Movies</asp:ListItem>
                 <asp:ListItem>Everything Else</asp:ListItem>
-            </asp:DropDownList><!--connect to a datasource? dropdown list for a field?-->
+            </asp:DropDownList><!---connect to a datasource? dropdown list for a field?-->
             <br />
             </td></tr>
 
